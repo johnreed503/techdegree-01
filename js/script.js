@@ -41,14 +41,23 @@ const quotes = [
   }
 ];
 
-console.log(quotes[4].year)
 
 /***
  * `getRandomQuote` function
 ***/
 
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+};
 
+function getRandomQuote(array) {
+  let randomQuote = array(getRandomInt(0, array.length))
+  return randomQuote
+};
 
+console.log(getRandomInt(0, quotes.length))
 /***
  * `printQuote` function
 ***/
