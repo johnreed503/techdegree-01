@@ -37,7 +37,8 @@ const quotes = [
     quote : 'Deep in the human unconscious is a pervasive need for a logical universe that makes sense. But the real universe is always one step beyond logic',
     source : 'Frank Herbert',
     citation : 'Dune',
-    year : '1965'
+    year : '1965',
+    tag : 'SciFi'
   }
 ];
 
@@ -68,18 +69,46 @@ function printQuote() {
   let html = ''
   let quote = getRandomQuote(quotes)
 
-    //to display if theres a citation and year
-  if (quote.citation !== undefined && quote.year !== undefined) {
+    //to display if theres a citation, year and tag
+  if (quote.citation !== undefined && quote.year !== undefined && quote.tag !== undefined) {
     html += `
     <p class="quote"> ${quote.quote} </p>
     <p class="source"> ${quote.source}
     <span class="citation"> ${quote.citation} </span>
     <span class="year"> ${quote.year} </span>
+    <span class="tag"> ${quote.tag} </span>
     </p>
     `
   }
-  //to display if theres a citation but no year
-  else if (quote.citation !== undefined && quote.year === undefined) {
+  //to display if theres a citation and year but no tag
+  else if (quote.citation !== undefined && quote.year !== undefined && quote.tag === undefined) {
+    html += `
+    <p class="quote"> ${quote.quote} </p>
+    <p class="source"> ${quote.source}
+    <span class="citation"> ${quote.citation} </span>
+    <span class="year"> ${quote.year} </span>
+    `
+  }
+  //to display if theres a citation and tag but no year
+  else if (quote.citation !== undefined && quote.year === undefined && quote.tag !== undefined) {
+    html += `
+    <p class="quote"> ${quote.quote} </p>
+    <p class="source"> ${quote.source}
+    <span class="citation"> ${quote.citation} </span>
+    <span class="tag"> ${quote.tag} </span>
+    `
+  }
+  //to display if theres a year and tag but no citation
+  else if (quote.citation === undefined && quote.year !== undefined && quote.tag !== undefined) {
+    html += `
+    <p class="quote"> ${quote.quote} </p>
+    <p class="source"> ${quote.source}
+    <span class="year"> ${quote.year} </span>
+    <span class="tag"> ${quote.tag} </span>
+    `
+  }
+  //to display if theres a citation but no year or tag
+  else if (quote.citation !== undefined && quote.year === undefined && quote.tag === undefined) {
     html += `
     <p class="quote"> ${quote.quote} </p>
     <p class="source"> ${quote.source}
@@ -87,8 +116,8 @@ function printQuote() {
     </p>
     `
   }
-  //to display if theres a year but no citation
-  else if (quote.citation === undefined && quote.year !== undefined) {
+  //to display if theres a year but no citation or tag
+  else if (quote.citation === undefined && quote.year !== undefined && quote.tag === undefined) {
     html += `
     <p class="quote"> ${quote.quote} </p>
     <p class="source"> ${quote.source}
@@ -96,7 +125,16 @@ function printQuote() {
     </p>
     `
   }
-  //to display if theres no citation or year
+  //to display if theres a tag but no citation or year
+  else if (quote.citation === undefined && quote.year === undefined && quote.tag !== undefined) {
+    html += `
+    <p class="quote"> ${quote.quote} </p>
+    <p class="source"> ${quote.source}
+    <span class="tag"> ${quote.tag} </span>
+    </p>
+    `
+  }
+  //to display if theres no citation, year or tag
   else {
     html += `
     <p class="quote"> ${quote.quote} </p>
