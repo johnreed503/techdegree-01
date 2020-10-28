@@ -3,12 +3,8 @@ Treehouse FSJS Techdegree:
 project 1 - A Random Quote Generator
 ******************************************/
 
-// For assistance:
-  // Check the "Project Resources" section of the project instructions
-  // Reach out in your Slack community - https://treehouse-fsjs-102.slack.com/app_redirect?channel=chit-chat
-
 /***
- * `quotes` array
+ * array of quote objects
 ***/
 const quotes = [
   {
@@ -45,16 +41,16 @@ const quotes = [
 
 
 /***
- * `getRandomInt` to use in getRandomQuote
+ * `getRandomInt` to use in getRandomQuote function, max is exclusive and minimun is inclusive, designed for the min to always be 0 and the max to be array.length
 ***/
 function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+  return Math.floor(Math.random() * (max - min) + min);
 };
 
 /***
- * `getRandomQuote` function to select random quote from quotes array
+ * `getRandomQuote` uses the getRandomInt function to get a random number to use as the index for quotes, generating a random quote from the quotes array
 ***/
 function getRandomQuote(arr) {
   let randomQuote = arr[getRandomInt(0, arr.length)]
@@ -63,7 +59,7 @@ function getRandomQuote(arr) {
 
 
 /***
- * `printQuote` function
+ * `printQuote` function, runs through an else if statement to determine what properties are available and then builds the html string accordingly
 ***/
 function printQuote() {
   let html = ''
@@ -143,6 +139,8 @@ function printQuote() {
     `
   }
 
+
+//generates a random background color and applies it
   function random_bg_color() {
     var x = Math.floor(Math.random() * 256);
     var y = Math.floor(Math.random() * 256);
@@ -152,14 +150,16 @@ function printQuote() {
 
     document.body.style.background = bgColor;
     }
-
+//calling function inside printQuote so that everytime printQUote is called it changes background color
   random_bg_color();
 
+//updates page with html string
   return document.getElementById('quote-box').innerHTML = html;
   //document.getElementById('quote-box').innerHTML = html;
 };
 
-
+//randomly refreshes page ever 15 seconds or 15000 milliseconds
+setInterval(printQuote, 15000)
 
 /***
  * click event listener for the print quote button
