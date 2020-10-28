@@ -64,9 +64,9 @@ function getRandomQuote(arr) {
 /***
  * `printQuote` function
 ***/
-function printQuote(arr) {
+function printQuote() {
   let html = ''
-  let quote = getRandomQuote(arr)
+  let quote = getRandomQuote(quotes)
 
     //to display if theres a citation and year
   if (quote.citation !== undefined && quote.year !== undefined) {
@@ -104,12 +104,11 @@ function printQuote(arr) {
     </p>
     `
   }
-  return html
+  return document.getElementById('quote-box').innerHTML = html;
   //document.getElementById('quote-box').innerHTML = html;
 };
 
-let test = printQuote(quotes)
-console.log(test)
+
 
 /***
  * click event listener for the print quote button
