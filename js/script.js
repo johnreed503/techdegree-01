@@ -140,7 +140,7 @@ function printQuote() {
   }
 
 
-//generates a random background color and applies it
+//generates a random background color and applies it_sourced from W3resource https://www.w3resource.com/javascript-exercises/javascript-math-exercise-40.php
   function random_bg_color() {
     var x = Math.floor(Math.random() * 256);
     var y = Math.floor(Math.random() * 256);
